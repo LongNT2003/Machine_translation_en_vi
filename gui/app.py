@@ -1,6 +1,10 @@
-from flask import Flask, render_template, request, redirect, url_for
-
+from flask import Flask, render_template, request
+import utilization
 app = Flask(__name__)
+
+
+
+
 
 # A simple in-memory store for translation history
 translation_history = []
@@ -8,10 +12,10 @@ translation_history = []
 def pseudo_translate(text, lang):
     if lang == 'en_to_vi':
         # Placeholder translation logic: Prefix with "Translated to Vietnamese: "
-        return f"Translated to Vietnamese: {text}"
+        return utilization.en_to_vi(text)
     else:
         # Placeholder translation logic: Prefix with "Translated to English: "
-        return f"Translated to English: {text}"
+        return utilization.vi_to_en(text)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():

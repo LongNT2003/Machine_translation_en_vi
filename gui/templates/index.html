@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translation Task</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Translation Task</h1>
+        <form method="POST" class="translate-form">
+            <div class="input-group">
+                <label for="lang">Select Language:</label>
+                <select id="lang" name="lang">
+                    <option value="en_to_vi">English to Vietnamese</option>
+                    <option value="vi_to_en">Vietnamese to English</option>
+                </select>
+            </div>
+            <div class="input-output-container">
+                <div class="input-group">
+                    <label for="input_text">Input Text:</label>
+                    <textarea id="input_text" name="input_text" rows="10" required>{{ input_text }}</textarea>
+                </div>
+                <div class="input-group">
+                    <label for="output_text">Output Text:</label>
+                    <textarea id="output_text" name="output_text" rows="10" readonly>{{ history[-1][1] if history else '' }}</textarea>
+                </div>
+            </div>
+            <button type="submit" name="translate">Translate</button>
+        </form>
+        <form method="POST" class="delete-form">
+            <button type="submit" name="delete_history" class="delete-button">Delete History</button>
+        </form>
+        <h2>Translation History</h2>
+        <ul>
+            {% for input_text, output_text, lang in history %}
+                <li>
+                    <strong>Input:</strong> {{ input_text }} <br>
+                    <strong>Output:</strong> {{ output_text }} <br>
+                    <strong>Language:</strong> {{ 'English to Vietnamese' if lang == 'en_to_vi' else 'Vietnamese to English' }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
