@@ -87,8 +87,8 @@ vietnamese=Field(train_filepaths[0],SRC_LANGUAGE,min_freq=10)
 english=Field(train_filepaths[1],TGT_LANGUAGE, min_freq=10)
 vocab_transform[SRC_LANGUAGE]=vietnamese.build_vocab()
 vocab_transform[TGT_LANGUAGE]=english.build_vocab()
-print('vi vocab size', len(vocab_transform[SRC_LANGUAGE]))
-print('en vocab size', len(vocab_transform[TGT_LANGUAGE]))
+print('src vocab size', len(vocab_transform[SRC_LANGUAGE]))
+print('tgt vocab size', len(vocab_transform[TGT_LANGUAGE]))
 
 #data transform
 # helper function to club together sequential operations
