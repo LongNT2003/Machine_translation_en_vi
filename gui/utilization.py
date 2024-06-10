@@ -205,7 +205,7 @@ else:
     print('no dict found!')
 
 
-model_path_vien='load model/vi2en4.pth'
+model_path_vien='load model/vi2en3.pth'
 if os.path.exists(model_path_vien):
     state_dict=torch.load(model_path_vien,map_location=DEVICE)
     vi2en.load_state_dict(state_dict)
